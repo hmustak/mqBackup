@@ -1,13 +1,15 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
- 
+
 # mqBackup Tool V1.3 Beta
 # @site: http://mqbackup.maqas.net/
-# @author: Hakan Mustak & Kamil Ors
-# @mail: info@maqas.net
+# @author: Hakan Mustak
+# @mail: hmustak@gmail.com
 # Revised on 22/10/2012
 # Created on 10/03/2012
- 
+# Python Version : 2.6x
+
+
 #Betik içinde İhtiyaç duyduğumuz paketler
 import os, time, MySQLdb, tarfile, shutil, smtplib
 from os.path import getsize
@@ -15,7 +17,7 @@ from email.MIMEMultipart import MIMEMultipart
 from email.MIMEBase import MIMEBase
 from email.MIMEText import MIMEText
 
- 
+
 #AYARLAR - (Kullanıcı tarafından değiştirilebilir ayarlar)
 #---------------------------------------------------------------------------
 #MySQL kurulu bilgisayar
@@ -36,7 +38,7 @@ mailPasswd = "PASSWORD"
 mailFrom = "hakan@mustak.org"
 mailTo = "hmustak@gmail.com"
 #----------------------------------------------------------------------------
- 
+
 # Kullanıcı tarafından değiştirilmesi ÖNERİLMEYEN ayarlar
 #---------------------------------------------------------------------------
 #Tarih-Saat bilgisi
@@ -67,7 +69,7 @@ def dbListeOlustur():
         dbNesne = dataCon.cursor()
         # Databaselerimizi çekelim
         dbNesne.execute("show databases")
-    
+
         # Ve Databaselerimizi yedekleyelim
         for database in dbNesne.fetchall():
             #Yedeklenmesini istemediğimiz VT'leri hariç bırakalım
@@ -203,7 +205,7 @@ def bilgi():
         print "\033[1;;31m%s adresine bilgilendirme maili gönderilememiştir\033[0m" % (mailUser)
         print "\033[1;;31mLütfen email bağlantı bilgilerinizi kontrol ediniz\033[0m"
         print "\n"
-        
+
 #Dizin oluşturma fonksiyonumuz
 def dizinOlustur(dizin):
     os.mkdir(dizin)
